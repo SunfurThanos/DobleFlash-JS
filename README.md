@@ -34,11 +34,11 @@ DobleFlash-JS
 
 > DEMOS
 
-[reproductor básico](https://sunfurthanos.github.io/servidor-demos/samples/1.%20basic.html)
+[reproductor basico](https://sunfurthanos.github.io/servidor-demos/samples/3.%20custom%20FPS.html)
 
 [auto reproducción](https://sunfurthanos.github.io/servidor-demos/samples/2.%20auto-play.html)
 
-[FPS personalizado](https://sunfurthanos.github.io/servidor-demos/samples/3.%20custom%20FPS.html)
+[reproducción no ciclica](https://sunfurthanos.github.io/servidor-demos/samples/1.%20basic.html)
 
 [evnto click](https://sunfurthanos.github.io/servidor-demos/samples/4.%20event%20click.html)
 
