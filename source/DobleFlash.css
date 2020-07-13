@@ -1,0 +1,123 @@
+
+.dobleFlash_slave{
+  -webkit-user-select:none;-moz-user-select:none;
+  -ms-user-select: none;cursor:default;pointer-events:none;
+}
+
+@-webkit-keyframes rotateSpinnerSDF_ {
+  0% {
+    transform:rotate(0deg)
+  } 100% {
+    transform:rotate(360000deg)
+  }
+}
+
+.class_centrarSDF_ {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background: transparent;
+}
+
+
+.class_arribaSDF_ {
+  display: inline-block;
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+  -moz-transform: translate(-50%);
+  -ms-transform: translate(-50%);
+  -o-transform: translate(-50%);
+  transform: translate(-50%);
+  background: transparent;
+}
+
+.class_abajoSDF_ {
+  display: inline-block;
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+  -moz-transform: translate(-50%);
+  -ms-transform: translate(-50%);
+  -o-transform: translate(-50%);
+  transform: translate(-50%);
+  background: transparent;
+}
+
+
+.class_cotenedorSDF_ {
+  width: 100%;
+  height: 100%;
+}
+
+.cropSDF_ {
+    position: relative;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.antiSelectSDF_ {
+  -webkit-user-select:none;-moz-user-select:none;-ms-user-select: none;pointer-events:none;
+}
+
+.SDF_BYTES {
+  -webkit-transform: translate(-50%, -50%);-moz-transform: translate(-50%, -50%);-ms-transform: translate(-50%, -50%);-o-transform: translate(-50%, -50%);transform: translate(-50%, -50%);-webkit-user-select:none;-moz-user-select:none;-ms-user-select: none;pointer-events:none;position: absolute;cursor:default;top: 50%;left: 50%;border:0;vertical-align: baseline;
+}
+
+.class_barraSDF_ {
+  position: absolute;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  background: black; opacity: 0.75;
+}
+
+
+/*animaciones de opacidad para los botones del reproductor*/
+.class_button_opacity[name="FLASH_button_leave"] {
+  opacity: 0.3;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.class_button_opacity[name="FLASH_button_hover"] {
+  opacity: 0.7;
+  -webkit-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
+}
+
+
+.contenedor_overlay_FLASH {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background: black;
+}
+
+
+.text_gradiant_FLASH {
+  background: linear-gradient(to right, yellow, orange);
+  background-color: rgba(0, 0, 0, 0);
+  background-image: linear-gradient(to right, yellow, orange);
+  background-repeat: repeat;
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-origin: padding-box;
+  background-position-x: 0%;
+  background-position-y: 0%;
+  background-size: auto auto;
+  background-clip: text;
+  color: #ff2b63;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
