@@ -2,139 +2,129 @@
 DobleFlash-JS
 =============
 
-`DobleFlash` es un nuevo contenedor para animaciones web inspirado en [Flash Video](https://es.wikipedia.org/wiki/Flash_Video), soporta los codec JPEG y PNG, `DobleFlash-JS` es la API para **JavaScript** que permite reproducir de manera **Ultra-Magica** este nuevo formato.
+`DobleFlash` is a new web multimedia container, its extension is `.DOF`, it is inspired by [SWF](https://wikipedia.org/wiki/swf), it allows to create animations of frames being the notable improvement of GIF, it also allows to create animated cursors compatible with HTML5, `DobleFlash-JS` is the API for **JavaScript** that allows to reproduce this new format, it is inspired by [Flash Player](https://wikipedia.org/wiki/Adobe_Flash_Player)
 
 ---
 
-**Licencia** [GNU GPL v3](http://www.gnu.org/licenses)
+**License** [GNU GPL v3](http://www.gnu.org/licenses)
 
 ---
 
-> ¿Que problemas resuelve DobleFlash?
+> How is the Double Flash format different from other alternatives?
 
-**Publicidad** puede ser fácilmente usado para anuncios publicitarios
+Of all the alternatives [GfyCat](http://www.gfycat.com) is the most powerful, even so it does not have an efficient load in all broadband, you have to depend on the online service to continue working, it is not Open-source, with `DobleFlash-JS` that does not happen since it allows you to have the playback engine at all times and to test in OFFLINE ways, being able to make improvements in the code if you wish.
 
-**DOF vs GIF** DobleFlash posee un menor peso y mayor calidad que las animaciones GIF, esto permite usar con mayor eficacia la banda ancha.
+*Format .DOF*
+1. less weight and quality than GIF
+2. supports structure for frame animations for video and animated cursors
+3. supports Codecs Jpeg & PNG
+4. has a multi-platform program, which allows you to convert video, PSD, image sequences to the DoubleFlash format
 
-**controles** puedes pausar, reanudar, detener, activar modo cíclico, cambiar aspecto radial, activar cache de reproducción, ir de fotograma a fotograma, cambiar los fps, captura de fotograma, high-velocity, descargar animación o inclusive poner la reproducción en pantalla completa.
-
-**descargar** puedes descargar la animación del servidor o del cache de reproducción generado en el navegador, con lo cual los usuarios de tu proyecto web la tendrán BIEN fácil para descargar las animaciones.
-
-**reproducción automática** permite activar la reproducción automática de las animaciones tanto en PC como dispositivos móviles.
-
-**atajos de teclado** con `space` puedes reproducir, pausar o reanudar, con `b` puedes saltar a los fotogramas anteriores, con `n` saltas a los fotogramas siguientes, con `s` puedes detener la reproducción, con `f` puedes entrar y salir de visualización de pantalla completa, para usar los atajos de teclado solo debes colocar el cursor sobre el reproductor y presionar la tecla deseada.
-
-**CACHE de reproducción** cada segunda reproducción de una animación siempre tendrá mayor aceleración que la primera, esto es gracias a un hacheo blanco que permite cachear la animación antes de reproducir o después de la primera reproducción, según la opción activada.
-
-**high-velocity** esta opción permite un menor consumo del CPU, pero a costa de una menor calidad de decodificación en el rasterizado del bitmap, útil para el navegador Firefox.
-
-**performance** DobleFlash es único ya que provee una gran experiencia de usuario, las animaciones se pausan de forma automática si es necesario, por ejemplo cuando haces foco fuera de la pagina o cuando la animación no queda visible en el scroll, esta ultima te permitirá tener infinidad de animaciones según la cantidad de contenido deseado, sin hacer que el navegador se sobre-cargue, en el caso de que dos o más animaciones estén visibles en el scroll y pongas una de ellas en pantalla completa las demás se pausaran hasta que salgas de pantalla completa, DobleFlash más que una alternativa es tu mejor opción para animaciones web.
+*DobleFlash-JS*
+1. effective loading bar to read the frame animation file (video)
+2. effective reproduction & good performance
+3. Automatic optimizations for a good user experience
+4. Support for automatic playback on PC and mobile devices
+5. It allows loading animated cursors in CSS3 and animations (video) in HTML5
+6. Provides you with a more advanced technique than Sprite-CSS
 
 ---
 
-> DEMOS
+> View DEMOS
 
-[reproductor basico](https://sunfurthanos.github.io/DobleFlash-JS/samples/3.%20custom%20FPS.html)
+[Non-cyclical playback](https://sunfurthanos.github.io/DobleFlash-JS/samples/1.basic.html)
 
-[auto reproducción](https://sunfurthanos.github.io/servidor-demos/samples/2.%20auto-play.html)
+[Auto Play](https://sunfurthanos.github.io/DobleFlash-JS/samples/2.auto-play.html)
 
-[reproducción no ciclica](https://sunfurthanos.github.io/servidor-demos/samples/1.%20basic.html)
+[Customize FPS](https://sunfurthanos.github.io/DobleFlash-JS/samples/3.custom_FPS.html)
 
-[evnto click](https://sunfurthanos.github.io/servidor-demos/samples/4.%20event%20click.html)
-
-**MÁS EJEMPLOS** ¿Te encantaron los `DEMOS` quieres más ejemplos de uso, quieres saber que más hace esta nueva tecnología?, !pues que esperas descarga DobleFlash-JS y lee los ejemplos de la carpeta [samples](samples).
+[Click event](https://sunfurthanos.github.io/DobleFlash-JS/samples/4.event_click.html)
 
 ---
 
 > ¿como usar DobleFlash-JS en mi proyecto web?
 
-**PASO 1** copia la carpeta [./source](source), al directorio de trabajo de tu proyecto web, si lo deseas puedes renombrarla.
+**PASO 1** copy the folder [./source](source), to the working directory of your web project, if you wish you can rename it.
 
-**PASO 2** importar `DobleFlash.js` y definir el tipo de reproductor deseado en tu HTML...
+**PASO 2** import `DobleFlash.js` and define the desired type of player in your HTML ...
 
 ```html
-<!-- importando API (DobleFlash-JS) -->
+<!-- import API (DobleFlash-JS) -->
 <script type="text/javascript" src="./DobleFlash-JS/DobleFlash.js"></script>
 
-<!-- definiendo reproductor básico -->
+<!-- defining basic player -->
 <source src="./src/animation.DOF" type="FLASH" style="width: 380;height: 200">
 ```
 
-**PASO 3** ejecuta tu proyecto web desde un `localhost` o `servidor-online`
+**STEP 3** run your web project from a `localhost` or `server-online`
 
-**RESUMEN** como se puede apreciar la implementación en un proyecto web es muy fácil, ademas no requiere conocimientos en JS, !más fácil imposible! :)
-
----
-
-**INFORMACIÓN PRIVILEGIADA** en Firefox 52 al 57, no hace falta que ejecutes tu proyecto web en un localhost o servidor-online, esto te permitirá hacer testeos rápidos y concretos sin mucho protocolo :)
+**SUMMARY** as you can see the implementation in a web project is very easy, also does not require knowledge in JS, easier impossible! :)
 
 ---
 
-> ¿cual es el mejor Navegador Web para DobleFlash-JS?
+> What is the best web browser for DobleFlash-JS?
 
-DobleFlash-JS esta diseñado para obtener una buena aceleración por CPU, GPU y cache en el navegador `Google Chrome`, sin embargo es compatible con otros navegadores, pero aun así el rendimiento siempre sera mayor en Google Chrome :)
-
----
-
-## ¿Foro de preguntas?
-
-- Para dirigir sus comentarios, ideas de desarrollo o hablar de Python y un poquito (OFFTOPIC moderado) de HTML5, puede hacerlo por medio del chat para programadores en español.
-
-**sala IRC**: #python-es | #python-es_OFFTOPIC
+DobleFlash-JS is designed to get a good acceleration by CPU, GPU and cache in the `Google Chrome` browser, however it is compatible with other browsers, but even so the performance will always be higher in Google Chrome :)
 
 ---
 
-# Herramientas en Desarrollo - **FASE 1**
+# Tools in Development - **PHASE 1**
 
-**heredado de funciones** heredado automaticos de propiedades CSS estrategicas y eventos de JS definidos por el usuario
+**paused-instantaneous** the paused is tied to the FPS assigned to the animations, with this new patch the response time for the paused will be instantaneous.
 
-**pausado-instantáneo** el pausado esta atado a los FPS asignados a la animaciones, con este nuevo parche el tiempo de respuesta para el pausado sera instantáneo.
+**inherited from functions** automatic inherited from strategic CSS properties and user-defined JS events
 
-**key<=Stop** nuevo atajo de teclado para detener la reproducción, salta al primer fotograma y pausa la reproducción.
+**auto-cache** you can manually activate the playback cache system, the cache system allows a good FPS rate without consuming much CPU.
 
-**auto-cache** podrás activar manualmente el sistema de cache de reproducción
+**fullscreen-auto-pause** make animations pause if one of them is in full screen for a better user experience
 
-**fullscreen-auto-pause** hacer que las animaciones se pausen si una de ellas esta en pantalla completa para una mayor experiencia de usuario
+**controls** playback controls, such as: pause, play, stop, full screen, view or download frame, jump from one frame to another, download animation file (it is downloaded from the cache generated in the browser, to avoid unnecessary requests to the server), extend image by proportion, see animation information (resolution, FPS, creator, date).
 
-**controles** podrás activar funciones de reproducción profesionales, de forma gráficas e intuitivas
+**scroll-pause** if the animations are not visible in the scroll they will be paused
 
-**scroll-pause** si las animaciones no son visibles en el scroll se pausaran
+**scroll-pause-syncro** if animations are visible in the scroll, but moving the scroll will pause for a better experience
 
-**scroll-pause-syncro** si las animaciones son visibles en el scroll, pero mueves el scroll se pausaran para una mayor experiencia
+**load-syncro** you can choose if you want to make the animations load one after the other (synchronous loading), something very basic on any website
 
-**load-syncro** podrás elegir si deseas hacer que las animaciones se carguen una después de otra (carga sincrónica), algo muy elemental en cualquier web
+**Animated Cursor** support to use animated cursors in `HTML5`, this will allow to automatically embed the animated cursors files in CSS3.
 
-**Cursor animado** soporte para usar cursores animados en `HTML5`, esto permitirá de forma automatica embeber de forma arbitraria los archivos de cursores animados en CSS3 sin mucho protocolo.
+**Delos-sprite** `CSS sprites` have been used in HTML5 and CSS3, to avoid the need to load an image more than once, DobleFlash-JS does it much better, you only have to load the image from HTML5 and the API will generate an automatic cache, this way when you want to load the same image instead of requesting the request from the server, the API refactor the original url of the cell involved by that of the local cache, of course in each image you can activate it or not the cache system, allowing professional and effective use.
 
-**Delos-sprite** los `sprites CSS` se han venido usando en HTML5 y CSS3, para evitar la necesidad de cargar una imagen más de una vez, DobleFlash-JS lo hace mucho mejor, solo debes cargar la imagen que desde HTML5 y la API generara un cache automático, de esta manera cuando se desee cargar la misma imagen en vez de pedir la petición al servidor, la API refactoriza la url original por la del cache local, por-supuesto en cada imagen puedes activarle o no el sistema de cache, permitiendo uso profesional e eficaz.
-
-**Conversor multimedia** Programa multi-plataforma `Windows/Linux` sencillo, estético e intuitivo que permite convertir secuencias de imágenes PNG a cursores animados, convierte video o animaciones hechas en Photoshop (PSD) a animación DobleFlash, ademas podrás privatizar las animaciones si así lo deseas, es decir que su reproducción solo sea compatible desde un determinado hosting, también integra un visor compacto y ligero para reproducir las animaciones DobleFlash y GIFs.
+**Multimedia converter** Simple, aesthetic and intuitive program for `Windows / Linux` that allows you to convert sequences of PNG images to animated cursors, convert video or animations made in Photoshop (PSD) to DoubleFlash animation, you can also privatize the animations if so you want it, that is to say that its reproduction is only compatible from a certain hosting, it also integrates a compact and light viewer to reproduce the DoubleFlash animations and GIFs.
 
 ---
 
-# Herramientas en Desarrollo - **FASE 2 (requiere patrocinadores)**
+# Tools in Development - **PHASE 2 (requires sponsors)**
 
-**Conversor multimedia (nueva versión)** soporte para MAC, ademas podrás convertir video a otros formatos y convertir archivos de audio todos los que quieras al mismo tiempo sin importar la cantidad de núcleos del CPU, permite ademas bajar y subir la velocidad de conversión en tiempo real, para conversiones de video tiene aceleración por GPU y la posibilidad `Ultra-Magica` de reanudar la conversión aun si apagas la computadora, también es posible reanudarla en otra computadora, dispone de uso por consola útil para servicios online multimedia.
+**Multimedia converter (new version)** MAC support, you can also convert video to other formats and convert all the audio files you want at the same time regardless of the number of CPU cores, it also allows you to lower and increase the speed of Real-time conversion, for video conversions it has GPU acceleration and the `Ultra-Magical` possibility of resuming the conversion even if you turn off the computer, it is also possible to resume it on another computer, it has useful console use for online multimedia services.
 
-**Editor de animaciones** programa escrito en HTML5 y JS, que permite hacer cortes de edición y composiciones en tus animaciones ya generadas sin necesidad se re-codificar el resultado, solo haces los cambios que desees y se convertirán a coordenadas de rasterización y reproducción que se guardaran en el archivo de la animación, con esto se evita la re-codificación y te permite hacer cambios de forma instantánea sin mucho protocolo.
+**Animation editor** program written in HTML5 and JS, which allows you to make editing cuts and compositions in your already generated animations without having to re-encode the result, the supported editing cuts range from duplicating a group of frames and moving them from one place to another in the timeline, delete them, apply reverse effect, change FPS, change (brightness, contrast and saturation) and create subtitles, this will allow you to do an endless number of parodies and `very hot` environments in your animations, without affecting the weight of the animation file, you only make the changes you want and you can copy the rasterization and playback coordinates to the clipboard, you must paste them in the desired player in your HTML, this avoids re-encoding and re-upload the animation to the server.
 
-**Visor para Android & IOS** programa ligero y adaptativo para visualizar y descargar animaciones DobleFlash de forma sencilla e intuitiva.
+```html
+<source
+	src="src/editable_animation.DOF"
+	type="FLASH"
+	style="width: 380;height: 200"
+	flash-script="iVBORFCFbw0CeOpEOw0KGgoAAABQAihMHhK9j2tNPV10jDjMxlozLCzDIHtdU53htM8MbOFfum3tYSZg9sfCzB1MHPkIHQnnjKPvhngU99xMSOpyxPPubLcp+roJ4FIOiUBgxcznzSYHbQ5ER"
+>
+```
 
-**Streaming** soporte para reproducción por Streaming
+**Viewer for Android & IOS** Light and adaptive program to view and download DoubleFlash animations in a simple and intuitive way.
 
-**Estandarización** invitar a la `W3C` y fabricantes de navegadores a que vuelva un estándar a DobleFlash, de esta manera este nuevo formato podrá estar integrado de forma nativa en los navegadores con lo cual se obtiene mayor performance de carga y reproducción en un `57,32%`, lo cual es más que suficiente para una estandarización eficiente y masiva.
+**Streaming** support for efficient streaming playback on any type of broadband
 
----
-
-## ¿Te enamoraste de DobleFlash, quieres ayudar económicamente al desarrollador?
-
-- Si consideras que el DobleFlash vale algo para tu día a día, puedes enviarme una remesa,
-con lo cual harás que el proyecto siga siendo ¡GRATUITO & LIBRE!...
-
-eres una empresa grande, pequeña, Freelance, ¿usas este proyecto en tu día a día?, !házmelo saber!, este proyecto necesita patrocinadores que deseen ayudar al proyecto con publicidad, donativos y sugerencias, los mismos serán incluidos en los créditos del proyecto como los HÉROES :)
-
-**correo del desarrollador**: hormigence123@gmail.com
+**Standardization** Invite the `W3C` and browser manufacturers to return a standard to DobleFlash, in this way this new format can be natively integrated in browsers, which results in greater loading and playback performance in 57.32%, which is more than enough for an efficient, responsible, democratic and massive standardization.
 
 ---
 
-**Sunfur Thanos** Si aprendes a estar abierto para adaptarte ¡seras invencible!
+## You fell in love with DobleFlash, do you want to help the developer financially?
+
+- If you consider that the Double Flash is worth something for your day to day, you can send me a remittance, with which you will make the project remain FREE & FREE! ...
+
+you are a large, small, Freelance company, do you use this project in your day to day ?, let me know !, this project needs sponsors who want to help the project with advertising, donations and suggestions, they will be included in the project credits like HEROES :)
+
+**developer email**: hormigence123@gmail.com
+
+---
+
+**Sunfur Thanos** If you learn to be open to adapt, you will be invincible!

@@ -94,6 +94,15 @@ Class_Flash2.prototype.playback = function() {
       return 0x06DB69EB
     }
 
+
+    if (this.entry.active_stop_play) {
+      this.entry.active_stop_play = false
+      this.frame_concurrent = 0x0
+      this.entry.isPause = false
+      this.entry.to_next_frame_active = true
+      return NEXT(this, 10)
+    }
+
     if (this.entry.to_next_frame) {
       this.entry.to_next_frame = false
       this.frame_concurrent++
@@ -313,8 +322,6 @@ Class_Flash2.prototype.read_file_FLASH2 = function(url, self) {
       this.fps = this.active_custom_fps
     }
 
-
-
     this.entry.to_next_frame = false
     this.entry.to_next_frame_active = false
 
@@ -324,6 +331,8 @@ Class_Flash2.prototype.read_file_FLASH2 = function(url, self) {
     this.timeout_playback = false
 
     this.entry.active_step_operation = false
+
+    this.entry.active_stop_play = false
 
     // extrayendo mapas de bytes (frames)
     var tmp = new Array()
@@ -375,7 +384,6 @@ Class_Flash2.prototype.read_file_FLASH2 = function(url, self) {
       });
 
       document.addEventListener("keypress", event => {
-
           if (event.key.toLocaleLowerCase() == " ") {
             if (isFocus) {
               self.child_play_pulsate_MAIN.style.display = "none"
@@ -501,18 +509,15 @@ Class_Flash2.prototype.create_canvas_reproductor = function($object) {
 
     this.cell_button_play_pulsate = button_play_pulsate
 
-
     // celda para evento de mouse + keypress
     this.entry = document.createElement("textarea")
     this.entry.style = ";background: transparent;position: relative;z-index: 2;border: none;resize: none;background: transparent;overflow: hidden;resize: none;color: transparent;outline: none;width: 100%;height: 100%;opacity: 0.1;"
     this.entry.style.cursor = cursor_theme_custom
     this.containerObject.appendChild(this.entry)
 
-
     if ($object.getAttribute("onclick")) {
       this.entry.setAttribute("onclick", $object.getAttribute("onclick"))
     }
-
 
     // variables de entorno
     var isFocus = false
@@ -574,24 +579,31 @@ Class_Flash2.prototype.create_canvas_reproductor = function($object) {
     entry.to_next_frame = false
     entry.to_back_frame = false
 
+
     document.addEventListener("keypress", event => {
-
-      if (event.key.toLocaleLowerCase() == "n") {
-          if (isFocus) {
-            entry.to_next_frame = true
-          }
-      }
-
-      if (event.key.toLocaleLowerCase() == "b") {
-          if (isFocus) {
-            entry.to_back_frame = true
-          }
-      }
 
       if (document.activeElement==entry) {
 
         event.preventDefault();
         event.stopPropagation();
+
+        if (event.key.toLocaleLowerCase() == "n") {
+            if (isFocus) {
+              entry.to_next_frame = true
+            }
+        }
+
+        if (event.key.toLocaleLowerCase() == "b") {
+            if (isFocus) {
+              entry.to_back_frame = true
+            }
+        }
+
+        if (event.key.toLocaleLowerCase() == "s") {
+          if (isFocus) {
+              entry.active_stop_play = true
+          }
+        }
 
 
         if (event.key.toLocaleLowerCase() == " ") {
@@ -664,7 +676,6 @@ Class_Flash2.prototype.create_canvas_reproductor = function($object) {
 
 // introspección para maquetas <source> de tipo Flash
 Class_Flash2.prototype.find_sourcesFlash = function() {
-  print = console.log
 
   var $lista = document.querySelectorAll('source[type="FLASH"]')
   var easySDF_list = new Array()
@@ -707,7 +718,7 @@ var PATH_DOBLEFLASH = new String()
 
 addEventListener('load', () => {
 
-  // cargando estilos
+  // cargando hoja de estilo para DobleFlash
   var $lista = document.querySelectorAll('script')
 
   for (var $pointer in $lista) {
