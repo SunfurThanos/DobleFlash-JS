@@ -34,7 +34,7 @@ DobleFlash-JS
 
 > DEMOS
 
-[reproductor basico](https://sunfurthanos.github.io/servidor-demos/samples/3.%20custom%20FPS.html)
+[reproductor basico](https://sunfurthanos.github.io/DobleFlash-JS/samples/3.%20custom%20FPS.html)
 
 [auto reproducción](https://sunfurthanos.github.io/servidor-demos/samples/2.%20auto-play.html)
 
