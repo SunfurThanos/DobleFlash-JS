@@ -8,11 +8,19 @@
 //-----------------------------------------------------------------------------//
 
 
-//---------------------------------------------------------------------------
+//-------------------------------------------------------------------------------
+//
+// crear variables globales
+//
+//-------------------------------------------------------------------------------
+
+var Flash2_WebSign = 'data:application/x-DobleFlash;base64,'
+
+//-------------------------------------------------------------------------------
 //
 // comprobando ejecución en Firefox
 //
-//---------------------------------------------------------------------------
+//-------------------------------------------------------------------------------
 
 // comprobando que sea el navegador web Firefox
 function isFirefox() {
@@ -22,11 +30,11 @@ function isFirefox() {
   if (navigator.userAgent.match(/firefox/i)) {return true} else {return false}
 }
 
-//---------------------------------------------------------------------------
+//-------------------------------------------------------------------------------
 //
 // conviertiendo flujo binario en Base64
 //
-//---------------------------------------------------------------------------
+//-------------------------------------------------------------------------------
 
 function encodeStream64(filestream, beg, fin) {
   var keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
@@ -69,11 +77,11 @@ function encodeStream64(filestream, beg, fin) {
   return output;
 }
 
-//---------------------------------------------------------------------------
+//-------------------------------------------------------------------------------
 //
 // FLASH2 <- CLASE
 //
-//---------------------------------------------------------------------------
+//-------------------------------------------------------------------------------
 
 // creando clase
 function Class_Flash2() {};
@@ -93,7 +101,6 @@ Class_Flash2.prototype.playback = function() {
 
       return 0x06DB69EB
     }
-
 
     if (this.entry.active_stop_play) {
       this.entry.active_stop_play = false
@@ -152,7 +159,7 @@ Class_Flash2.prototype.playback = function() {
       imgeObjectTemp.num_id       = self.frame_concurrent
 
       var frame = self.SJPEG_SIGN + self.frames[self.frame_concurrent]
-      self.sing = 'data:application/x-DobleFlash;base64,'
+      self.sing = Flash2_WebSign
       self.imagen_file = self.sing + encodeStream64(frame)
       return imgeObjectTemp
     }
@@ -263,14 +270,14 @@ Class_Flash2.prototype.read_file_FLASH2 = function(url, self) {
   var http = new XMLHttpRequest();
   http.open("GET", url, true);
 
-  http.containerObject = self.containerObject
-  http.entry = self.entry
-  http.active_auto_play = self.active_auto_play
-  http.child_play_pulsate_MAIN = self.child_play_pulsate_MAIN
-  http.cell_button_play_pulsate = self.cell_button_play_pulsate
-  http.active_custom_fps = self.active_custom_fps
-  http.child_progress_text = self.child_progress_text
-  http.chil_progress_MAIN = self.chil_progress_MAIN
+	http.containerObject          = self.containerObject
+	http.entry                    = self.entry
+	http.active_auto_play         = self.active_auto_play
+	http.child_play_pulsate_MAIN  = self.child_play_pulsate_MAIN
+	http.cell_button_play_pulsate = self.cell_button_play_pulsate
+	http.active_custom_fps        = self.active_custom_fps
+	http.child_progress_text      = self.child_progress_text
+	http.chil_progress_MAIN       = self.chil_progress_MAIN
 
   if (http.overrideMimeType)
     http.overrideMimeType('text/plain; charset=x-user-defined');
@@ -363,7 +370,7 @@ Class_Flash2.prototype.read_file_FLASH2 = function(url, self) {
     } else {
       this.child_play_pulsate_MAIN.style.display = "block"
       var frame = this.SJPEG_SIGN + this.frames[this.frame_concurrent]
-      var sing = 'data:application/x-DobleFlash;base64,'
+      var sing = Flash2_WebSign
       var imagen_file = sing + encodeStream64(frame)
       this.main_screen.src = imagen_file
 
@@ -426,7 +433,6 @@ Class_Flash2.prototype.create_canvas_reproductor = function($object) {
       }
     }
 
-
     var cursor_theme_custom = "default"
     if ($object.style.cursor) {
       cursor_theme_custom = $object.style.cursor
@@ -469,7 +475,6 @@ Class_Flash2.prototype.create_canvas_reproductor = function($object) {
     this.packing_crop.appendChild(this.containerObject);
     this.containerObject.style = "position: relative;background: black;overflow: hidden;";
     this.containerObject.className = "class_cotenedorSDF_ ";
-
 
     // celda de PLAY-PULSATE
     this.child_play_pulsate_MAIN = document.createElement("div");
@@ -708,11 +713,11 @@ Class_Flash2.prototype.find_sourcesFlash = function() {
   }
 }
 
-//---------------------------------------------------------------------------
+//-------------------------------------------------------------------------------
 //
 // cargando introspección de celdas
 //
-//---------------------------------------------------------------------------
+//-------------------------------------------------------------------------------
 
 var PATH_DOBLEFLASH = new String()
 
@@ -744,11 +749,11 @@ addEventListener('load', () => {
 });
 
 
-//---------------------------------------------------------------------------
+//-------------------------------------------------------------------------------
 //
 // BANNER de bienbenida para la consola
 //
-//---------------------------------------------------------------------------
+//-------------------------------------------------------------------------------
 
 function show_DobleFlash_banner() {
     (0,window.setTimeout)(window.console.log.bind(window.console,

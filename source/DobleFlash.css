@@ -4,14 +4,6 @@
   -ms-user-select: none;cursor:default;pointer-events:none;
 }
 
-@-webkit-keyframes rotateSpinnerSDF_ {
-  0% {
-    transform:rotate(0deg)
-  } 100% {
-    transform:rotate(360000deg)
-  }
-}
-
 .class_centrarSDF_ {
   display: inline-block;
   position: absolute;
@@ -24,7 +16,6 @@
   transform: translate(-50%, -50%);
   background: transparent;
 }
-
 
 .class_arribaSDF_ {
   display: inline-block;
@@ -52,7 +43,6 @@
   background: transparent;
 }
 
-
 .class_cotenedorSDF_ {
   width: 100%;
   height: 100%;
@@ -72,16 +62,7 @@
   -webkit-transform: translate(-50%, -50%);-moz-transform: translate(-50%, -50%);-ms-transform: translate(-50%, -50%);-o-transform: translate(-50%, -50%);transform: translate(-50%, -50%);-webkit-user-select:none;-moz-user-select:none;-ms-user-select: none;pointer-events:none;position: absolute;cursor:default;top: 50%;left: 50%;border:0;vertical-align: baseline;
 }
 
-.class_barraSDF_ {
-  position: absolute;
-  z-index: 1;
-  height: 100%;
-  width: 100%;
-  background: black; opacity: 0.75;
-}
-
-
-/*animaciones de opacidad para los botones del reproductor*/
+/*animaciones de opacidad para los botones del reproductor .DOF*/
 .class_button_opacity[name="FLASH_button_leave"] {
   opacity: 0.3;
   -webkit-transition: opacity 0.3s ease-in-out;
@@ -94,7 +75,7 @@
   transition: opacity 0.3s ease-in-out;
 }
 
-
+/*barra de carga del rachivo .DOF*/
 .contenedor_overlay_FLASH {
   position: absolute;
   width: 100%;
@@ -102,7 +83,6 @@
   z-index: 1000;
   background: black;
 }
-
 
 .text_gradiant_FLASH {
   background: linear-gradient(to right, yellow, orange);
