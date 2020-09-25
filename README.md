@@ -26,13 +26,15 @@ DobleFlash-JS
 
 > visualizar DEMOS
 
-[Reproducción no cíclica](https://sunfurthanos.github.io/DobleFlash-JS/samples/1.basic.html)
+[Reproducción no cíclica](https://sunfurthanos.github.io/DobleFlash-JS/samples/1.basico.html)
 
 [Auto reproducción](https://sunfurthanos.github.io/DobleFlash-JS/samples/2.auto-play.html)
 
 [Personalizar FPS](https://sunfurthanos.github.io/DobleFlash-JS/samples/3.custom_FPS.html)
 
-[Evento clic](https://sunfurthanos.github.io/DobleFlash-JS/samples/4.event_click.html)
+[Evento clic](https://sunfurthanos.github.io/DobleFlash-JS/samples/4.evento%20clic.html)
+
+[Efectos de retroceso](https://sunfurthanos.github.io/DobleFlash-JS/samples/5.%20efecto%20de%20retrocezo)
 
 ---
 
