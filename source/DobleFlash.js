@@ -10,6 +10,22 @@
 
 //-------------------------------------------------------------------------------
 //
+// BANNER de bienbenida para la consola
+//
+//-------------------------------------------------------------------------------
+
+function show_DobleFlash_banner() {
+    (0,window.setTimeout)(window.console.log.bind(window.console,
+    "%c Doble%cFlash",
+    "margin-top: 7px;color: #50E68A; background: #1A1A1A; font-size: 24px;",
+    "margin-top: 7px;color: white;background: #FF4040;font-size: 24px;margin-left: -6px;padding-right: 0.5em;"));
+}
+
+setTimeout(show_DobleFlash_banner, 128)
+
+
+//-------------------------------------------------------------------------------
+//
 // crear variables globales
 //
 //-------------------------------------------------------------------------------
@@ -118,6 +134,7 @@ Class_Flash2.prototype.playback = function() {
       return NEXT(this, 5)
     }
 
+
     if (this.entry.to_back_frame) {
       this.entry.to_back_frame = false
       this.frame_concurrent--
@@ -130,6 +147,13 @@ Class_Flash2.prototype.playback = function() {
       return NEXT(this, 10)
     }
 
+
+    if (!this.entry.to_back_frame_active||this.entry.to_next_frame_active) {
+      if (self.timeout_playback) {
+          window.clearTimeout(self.timeout_playback);
+      }
+    }
+
     if (this.frame_concurrent > (this.frames.length-1)) {
       this.frame_concurrent = this.frames.length-1
     }
@@ -138,14 +162,12 @@ Class_Flash2.prototype.playback = function() {
       this.frame_concurrent = 0
     }
 
-    NEO = this.list_chache_frames_ID
+    var NEO = this.list_chache_frames_ID
 
     var create_BITMAP = function(self) {
-      var imgeObjectTemp              = document.createElement("img");
+      var imgeObjectTemp          = document.createElement("img");
       imgeObjectTemp.className    = "SDF_BYTES " + " dobleFlash_slave";
-      imgeObjectTemp.name         = "SDF_streaming";
       imgeObjectTemp.alt          = "";
-
       imgeObjectTemp.style.imageRendering = "optimizeSpeed"
 
       if (isFirefox()) {
@@ -165,6 +187,7 @@ Class_Flash2.prototype.playback = function() {
     }
 
     if (!this.play_cache) {
+
       var imgeObjectTemp = create_BITMAP(this)
 
       var valid = true
@@ -187,9 +210,39 @@ Class_Flash2.prototype.playback = function() {
 
     } else {
 
-      if (this.frame_concurrent==(this.frames.length)) {
-        this.frame_concurrent = 0
+      if (this.active_step_operation_cache) {
+        console.log(this.frame_concurrent)
+        this.active_step_operation_cache = false
+      } else {
+
+        if (this.active_play_retro) {
+          if (this.frame_concurrent<1) {
+            this.frame_concurrent = this.frames.length - 0x1
+          } else {
+            this.frame_concurrent = this.frame_concurrent - 0x1
+          }
+          this.play_retro_active = true
+          this.active_play_retro = false
+        }
+
+        if (!this.active_play_retro) {
+          if (this.frame_concurrent==(this.frames.length)) {
+            this.frame_concurrent = 0
+          }
+        }
       }
+
+
+
+      if (this.play_retro_active) {
+        this.frame_concurrent--
+        if (this.frame_concurrent<0) {
+          this.frame_concurrent = 0
+          this.play_retro_active = false
+          this.active_play_retro = false
+        }
+      }
+
 
       this.frame_cache = this.list_chache_frames_ID[this.frame_concurrent]
 
@@ -235,6 +288,7 @@ Class_Flash2.prototype.playback = function() {
       this.entry.isPause = true
       this.entry.to_next_frame_active = false
       this.entry.active_step_operation = true
+      this.active_step_operation_cache = true
       return NEXT(this, 15)
     }
 
@@ -242,14 +296,24 @@ Class_Flash2.prototype.playback = function() {
       this.entry.isPause = true
       this.entry.to_back_frame_active = false
       this.entry.active_step_operation = true
+      this.active_step_operation_cache = true
       return NEXT(this, 15)
     }
 
-    this.frame_concurrent++
+    if (!this.play_retro_active||this.active_play_retro) {
+      this.frame_concurrent++
+    }
 
     if (this.frame_concurrent==(this.frames.length)) {
       this.frame_concurrent = 0
       this.play_cache = true
+      if (!this.entry.to_next_frame_active||this.entry.to_back_frame_active) {
+        if (this.active_play_retro_NVIDIA_2080) {
+          if (!this.play_retro_active||this.active_play_retro) {
+            this.active_play_retro = true
+          }
+        }
+      }
     }
 
     return NEXT(this)
@@ -279,6 +343,17 @@ Class_Flash2.prototype.read_file_FLASH2 = function(url, self) {
 	http.child_progress_text      = self.child_progress_text
 	http.chil_progress_MAIN       = self.chil_progress_MAIN
 
+
+  http.active_play_retro       = self.active_play_retro
+  http.play_retro_active       = false
+
+  if (http.active_play_retro) {
+    http.active_play_retro_NVIDIA_2080 = true
+  } else {
+    http.active_play_retro_NVIDIA_2080 = false
+  }
+
+
   if (http.overrideMimeType)
     http.overrideMimeType('text/plain; charset=x-user-defined');
   else
@@ -300,11 +375,10 @@ Class_Flash2.prototype.read_file_FLASH2 = function(url, self) {
 
     this.imgeObjectTemp              = document.createElement("img");
     this.imgeObjectTemp.className    = "SDF_BYTES " + " dobleFlash_slave";
-    this.imgeObjectTemp.name         = "SDF_streaming";
     this.imgeObjectTemp.alt          = "";
     this.imgeObjectTemp.style        = "width: 102%;height: auto;z-index: 20"
     this.imgeObjectTemp.style.border = "none";
-    this.imgeObjectTemp.style.imageRendering = "optimizeSpeed"
+    // this.imgeObjectTemp.style.imageRendering = "optimizeSpeed"
     this.containerObject.appendChild(this.imgeObjectTemp);
 
     this.delimit_frame         = "\u0000\uf7ff\uf7ff\u0000"
@@ -318,7 +392,7 @@ Class_Flash2.prototype.read_file_FLASH2 = function(url, self) {
     this.fps                   = Number(this.header[2])
     this.fps_raw               = this.fps
     this.frames                = this.chuks
-    this.frame_concurrent      = 0
+    this.frame_concurrent      = 0x0000
     this.main_screen           = this.imgeObjectTemp
     this.play_cache            = false
     this.list_chache_frames    = new Array()
@@ -390,8 +464,8 @@ Class_Flash2.prototype.read_file_FLASH2 = function(url, self) {
         isFocus = false
       });
 
-      document.addEventListener("keypress", event => {
-          if (event.key.toLocaleLowerCase() == " ") {
+      document.addEventListener("keydown", event => {
+          if (event.key.toLocaleLowerCase() == " " || event.code=="MediaPlayPause") {
             if (isFocus) {
               self.child_play_pulsate_MAIN.style.display = "none"
               event.preventDefault();
@@ -433,6 +507,11 @@ Class_Flash2.prototype.create_canvas_reproductor = function($object) {
       }
     }
 
+    this.active_play_retro = false
+    if ($object.getAttribute("play-retro")!=null) {
+      this.active_play_retro = true
+    }
+
     var cursor_theme_custom = "default"
     if ($object.style.cursor) {
       cursor_theme_custom = $object.style.cursor
@@ -454,6 +533,13 @@ Class_Flash2.prototype.create_canvas_reproductor = function($object) {
     this.MAIN = document.createElement("div");
     this.MAIN.className = $object.className
     this.MAIN.style = $object.style.cssText
+
+
+    if ($object.style.width=="") {
+      if ($object.style.height=="") {
+        this.MAIN.style = this.MAIN.style + ";width: 320px;height: 200px;"
+      }
+    }
 
     this.MAIN_0 = document.createElement("div");
     this.MAIN_0.style = "margin-bottom: 1.5em;margin-top: 1em;display: inline-block;"
@@ -483,7 +569,7 @@ Class_Flash2.prototype.create_canvas_reproductor = function($object) {
     this.child_play_pulsate_MAIN.style.display = "none"
 
     this.child_play_pulsate = document.createElement("div");
-    this.child_play_pulsate.style = "z-index: 30;width: 100%;height: 100%;background-color: #0094c6;position: absolute;opacity: 0.22;"
+    this.child_play_pulsate.style = "z-index: 30;width: 100%;height: 100%;background-color: #0094c6;position: absolute;opacity: 0.24;"
     this.child_play_pulsate_MAIN.appendChild(this.child_play_pulsate)
 
     var button_play_pulsate = document.createElement("div");
@@ -585,7 +671,7 @@ Class_Flash2.prototype.create_canvas_reproductor = function($object) {
     entry.to_back_frame = false
 
 
-    document.addEventListener("keypress", event => {
+    document.addEventListener("keydown", event => {
 
       if (document.activeElement==entry) {
 
@@ -610,8 +696,7 @@ Class_Flash2.prototype.create_canvas_reproductor = function($object) {
           }
         }
 
-
-        if (event.key.toLocaleLowerCase() == " ") {
+        if (event.key.toLocaleLowerCase() == " " || event.code=="MediaPlayPause") {
           if (isFocus) {
             if (entry.isPause) {
               entry.active_step_operation = false
@@ -674,7 +759,6 @@ Class_Flash2.prototype.create_canvas_reproductor = function($object) {
     cell_PP_2.appendChild(this.child_progress_text)
 
     this.containerObject.appendChild(this.chil_progress_MAIN)
-
 
     return this
 }
@@ -741,25 +825,9 @@ addEventListener('load', () => {
     }
   }
 
-  // cargando iconos
+  // cargando archivos de iconos
   DOBLEFLASH_ICON_PLAY = PATH_DOBLEFLASH + "logo.png"
 
   // creando evento de auto carga de animaciones FLASH2
   Flash2.find_sourcesFlash(false)
 });
-
-
-//-------------------------------------------------------------------------------
-//
-// BANNER de bienbenida para la consola
-//
-//-------------------------------------------------------------------------------
-
-function show_DobleFlash_banner() {
-    (0,window.setTimeout)(window.console.log.bind(window.console,
-    "%c Doble%cFlash",
-    "margin-top: 7px;color: #50E68A; background: #1A1A1A; font-size: 24px;",
-    "margin-top: 7px;color: white;background: #FF4040;font-size: 24px;margin-left: -6px;padding-right: 0.5em;"));
-}
-
-setTimeout(show_DobleFlash_banner, 128)
