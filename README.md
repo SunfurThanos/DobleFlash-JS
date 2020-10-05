@@ -12,7 +12,7 @@ DobleFlash-JS
 
 > Ventajas del formato & reproductor
 
-1. formato de menor peso y calidad que el GIF
+1. formato de menor peso y mayor calidad que el GIF
 
 2. soporte para pausar, reanudar, detener, colocar imagen en pantalla completa, moverse entre fotogramas & efecto de retroceso
 
@@ -20,7 +20,7 @@ DobleFlash-JS
 
 4. barra de carga efectiva para leer el archivo de video
 
-5. soporte de reproducción en dispositivos móviles
+5. soporte de reproducción automatica en dispositivos móviles
 
 ---
 
@@ -32,9 +32,9 @@ DobleFlash-JS
 
 [Personalizar FPS](https://sunfurthanos.github.io/DobleFlash-JS/samples/3.custom_FPS.html)
 
-[Evento clic](https://sunfurthanos.github.io/DobleFlash-JS/samples/4.evento%20clic.html)
+[Evento clic](https://sunfurthanos.github.io/DobleFlash-JS/samples/4.event_click.html)
 
-[Efectos de retroceso](https://sunfurthanos.github.io/DobleFlash-JS/samples/5.%20efecto%20de%20retrocezo)
+[Efecto de retrocezo](https://sunfurthanos.github.io/DobleFlash-JS/samples/5.%20efecto%20de%20retrocezo.html)
 
 ---
 
@@ -60,17 +60,17 @@ DobleFlash-JS
 
 > ¿cual es el mejor Navegador Web para DobleFlash-JS?
 
-DobleFlash-JS esta diseñado para obtener una buena aceleración por CPU, GPU y cache en el navegador `Google Chrome`, sin embargo es compatible con otros navegadores, aun así el rendimiento siempre sera mayor en Google Chrome :)
+DobleFlash-JS esta diseñado para obtener una buena aceleración por cache, CPU, GPU y cache en el navegador `Google Chrome`, sin embargo es compatible con otros navegadores, aun así el rendimiento siempre sera mayor en Google Chrome :)
 
 ---
 
-# Herramientas en Desarrollo - **FASE 1**
-
-> reproductor
+# Herramientas en Desarrollo
 
 1. codificador de video al formato (DOF), usable por terceras personas.
 
 2. soporte para convertir una secuencia de imágenes (PNG) a cursor animado compatible con HTML5
+
+3. controles graficos de reproducción
 
 ---
 
