@@ -1,10 +1,10 @@
 //-----------------------------------------------------------------------------//
-//     Author      : Sunfur Thanos                                             //
-//       Mail      : hormigence123@gmail.com                                   //
-//        Country  : Venezuela                                                 //
-//         License : GPL-3                                           	         //
+//     Author      : Andrade Echarry ->  ALF                                   //
+//      Mail       : hormigence123@gmail.com                                   //
+//       Country   : Venezuela                                                 //
+//        License  : GPL-3                                                     //
 //                                                                             //
-//                   Copyright 2020 Sunfur Thanos. All rights reserved.        //
+//                        Copyright 2020-2021 ALF. All rights reserved.        //
 //-----------------------------------------------------------------------------//
 
 
@@ -21,7 +21,7 @@ function show_DobleFlash_banner() {
     "margin-top: 7px;color: white;background: #FF4040;font-size: 24px;margin-left: -6px;padding-right: 0.5em;"));
 }
 
-setTimeout(show_DobleFlash_banner, 128)
+setTimeout(show_DobleFlash_banner, 0x64)
 
 
 //-------------------------------------------------------------------------------
@@ -465,7 +465,7 @@ Class_Flash2.prototype.read_file_FLASH2 = function(url, self) {
       });
 
       document.addEventListener("keydown", event => {
-          if (event.key.toLocaleLowerCase() == " " || event.code=="MediaPlayPause") {
+          if (event.key.toLocaleLowerCase() == " " || event.code=="MediaPlayPause" || event.code=="Pause") {
             if (isFocus) {
               self.child_play_pulsate_MAIN.style.display = "none"
               event.preventDefault();
@@ -696,7 +696,7 @@ Class_Flash2.prototype.create_canvas_reproductor = function($object) {
           }
         }
 
-        if (event.key.toLocaleLowerCase() == " " || event.code=="MediaPlayPause") {
+        if (event.key.toLocaleLowerCase() == " " || event.code=="MediaPlayPause" || event.code=="Pause") {
           if (isFocus) {
             if (entry.isPause) {
               entry.active_step_operation = false
